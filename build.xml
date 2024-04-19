@@ -1,0 +1,40 @@
+<project name="CadastroPOO" default="default" basedir=".">
+    <description>Builds, tests, and runs the project CadastroPOO.</description>
+    
+    <!-- Importing build-impl.xml file for default behavior -->
+    <import file="nbproject/build-impl.xml"/>
+    
+    <!-- Additional custom properties and tasks -->
+    <property name="custom.property" value="customValue"/>
+
+    <!-- Define a new target that depends on the clean task -->
+    <target name="custom-clean" depends="clean">
+        <echo message="Custom clean task running..."/>
+        <!-- Add any additional custom tasks here -->
+    </target>
+    
+    <!-- Modify the run target to include additional commands -->
+    <target name="run" depends="jar">
+        <echo message="Running the project..."/>
+        <!-- Execute the main class -->
+        <java classname="com.example.MainClass" classpath="${dist.dir}/${dist.jar}">
+            <!-- Add any arguments or properties needed -->
+            <arg value="arg1"/>
+            <arg value="arg2"/>
+        </java>
+    </target>
+
+    <!-- Override the compile task to include additional custom configurations -->
+    <target name="compile" depends="init">
+        <echo message="Custom compilation process starting..."/>
+        <javac srcdir="src" destdir="build/classes">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
+        </javac>
+        <echo message="Custom compilation process completed..."/>
+    </target>
+
+    <!-- Other targets and configurations can be added or modified as needed -->
+    
+</project>
